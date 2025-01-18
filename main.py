@@ -105,7 +105,7 @@ async def spotify_translator(client, message):
                                                      new_track['img_url'],
                                                      new_text)
             else:
-                await asyncio.sleep(1)
+                await asyncio.sleep(0.75)
                 await app.delete_messages(track_message.chat.id,
                                           track_message.id)
                 track_message = None
@@ -128,7 +128,7 @@ async def stop(client, message):
     is_translate = False
 
 
-app.add_handler(MessageHandler(spotify_translator, filters=filters.me & filters.command(    'spotify', prefixes='/')))
+app.add_handler(MessageHandler(spotify_translator, filters=filters.me & filters.command('spotify', prefixes='/')))
 app.add_handler(MessageHandler(stop, filters=filters.me & filters.command('stop', prefixes='/')))
 
 app.run()
